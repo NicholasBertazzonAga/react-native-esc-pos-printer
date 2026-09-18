@@ -1,3 +1,10 @@
+# Note about this package
+This is a fork of the original project, I did some changes to make it work with the latest react-native (0.87) and make it installable via git like this:
+```
+"react-native-esc-pos-printer": "git+https://github.com/NicholasBertazzonAga/react-native-esc-pos-printer.git#main",
+```
+Hopefully the original creator will update his package soon
+
 <p align="center">
   <img src="./docs/assets/printer.png"
      alt="Printer"
@@ -20,7 +27,7 @@
 
 ### React Native
 
-> [!WARNING]  
+> [!WARNING]
 > For react-native lower than 0.76.x version, use react-native-esc-pos-printer 4.3.3 or lower
 
 The current development version targets React Native 0.87+ and React 19.2.3+,
