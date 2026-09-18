@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     fontWeight: '600',
   },
   loadingContainer: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     justifyContent: 'center',
     alignItems: 'center',
   },

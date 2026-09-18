@@ -5,7 +5,7 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.module.model.ReactModuleInfo;
 import com.facebook.react.module.model.ReactModuleInfoProvider;
-import com.facebook.react.TurboReactPackage;
+import com.facebook.react.BaseReactPackage;
 import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EscPosPrinterPackage extends TurboReactPackage {
+public class EscPosPrinterPackage extends BaseReactPackage {
 
     @Nullable
     @Override
@@ -40,7 +40,6 @@ public class EscPosPrinterPackage extends TurboReactPackage {
                             EscPosPrinterModule.NAME,
                             false, // canOverrideExistingModule
                             false, // needsEagerInit
-                            true, // hasConstants
                             false, // isCxxModule
                             isTurboModule // isTurboModule
             ));
@@ -51,7 +50,6 @@ public class EscPosPrinterPackage extends TurboReactPackage {
                             EscPosPrinterDiscoveryModule.NAME,
                             false, // canOverrideExistingModule
                             false, // needsEagerInit
-                            true, // hasConstants
                             false, // isCxxModule
                             isTurboModule // isTurboModule
             ));

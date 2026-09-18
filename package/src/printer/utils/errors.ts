@@ -39,7 +39,7 @@ export function processComplextError(message: string): ComplexErrorData {
     const { type, data } = JSON.parse(message) as ComplexErrorRawData;
 
     return { errorType: type, data: String(data) };
-  } catch (error) {
+  } catch {
     return {
       errorType: 'result',
       data: message,

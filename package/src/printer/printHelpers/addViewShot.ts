@@ -13,7 +13,7 @@ export async function addViewShot(
     const RNViewShot = require('react-native-view-shot');
 
     captureRef = RNViewShot.captureRef;
-  } catch (error) {}
+  } catch {}
 
   if (!captureRef) {
     console.error('Install react-native-view-shot to use addViewShot');

@@ -1,33 +1,5 @@
-buildscript {
-  ext.getExtOrDefault = {name ->
-    return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['EscPosPrinter_' + name]
-  }
-
-  repositories {
-    google()
-    mavenCentral()
-  }
-
-  dependencies {
-    classpath "com.android.tools.build:gradle:8.7.2"
-  }
-}
-
-def reactNativeArchitectures() {
-  def value = rootProject.getProperties().get("reactNativeArchitectures")
-  return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
-}
-
-def isNewArchitectureEnabled() {
-  return rootProject.hasProperty("newArchEnabled") && rootProject.getProperty("newArchEnabled") == "true"
-}
-
 apply plugin: "com.android.library"
-
-if (isNewArchitectureEnabled()) {
-  apply plugin: "com.facebook.react"
-}
-
+apply plugin: "com.facebook.react"
 
 def getExtOrIntegerDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["EscPosPrinter_" + name]).toInteger()
@@ -36,12 +8,16 @@ def getExtOrIntegerDefault(name) {
 android {
   namespace "com.escposprinter"
 
+  buildFeatures {
+    buildConfig true
+  }
+
   compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
 
   defaultConfig {
     minSdkVersion getExtOrIntegerDefault("minSdkVersion")
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
-    buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
+    buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", "true"
   }
 
   buildTypes {
@@ -55,20 +31,13 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
   }
 
   sourceSets {
     main {
-      if (isNewArchitectureEnabled()) {
-          java.srcDirs += [
-            "generated/java",
-            "generated/jni"
-          ]
-      } else {
-              java.srcDirs += ['src/oldarch']
-      }
+      java.srcDirs += ["generated/java"]
     }
   }
 }
@@ -78,16 +47,14 @@ repositories {
   google()
 }
 
-
 dependencies {
   implementation "com.facebook.react:react-android"
   implementation fileTree(dir: "libs", include: ["*.jar"])
   implementation 'com.google.android.gms:play-services-location:21.0.1'
 }
-if (isNewArchitectureEnabled()) {
-  react {
-    jsRootDir = file("../src/")
-    libraryName = "RNEscPosPrinterSpec"
-    codegenJavaPackageName = "com.escposprinter"
-  }
+
+react {
+  jsRootDir = file("../src/")
+  libraryName = "RNEscPosPrinterSpec"
+  codegenJavaPackageName = "com.escposprinter"
 }

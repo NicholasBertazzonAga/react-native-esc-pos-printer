@@ -8,7 +8,7 @@ export async function tryToConnectUntil(
   async function connect() {
     try {
       await printer.connect(1500);
-    } catch (error) {}
+    } catch {}
     const status = await printer.getStatus();
 
     if (!predicate(status)) {

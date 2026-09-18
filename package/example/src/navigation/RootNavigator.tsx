@@ -26,7 +26,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export const RootNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator id="Root">
         <Stack.Screen name="Discovery" component={Discovery} />
         <Stack.Screen name="Printer" component={PrinterScreen} />
         <Stack.Screen name="PrintFromView" component={PrintFromView} />

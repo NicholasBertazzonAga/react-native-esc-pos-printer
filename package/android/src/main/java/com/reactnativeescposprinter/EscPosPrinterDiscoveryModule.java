@@ -113,7 +113,7 @@ public class EscPosPrinterDiscoveryModule extends NativeEscPosPrinterDiscoverySp
       return;
     }
 
-    Activity currentActivity = getCurrentActivity();
+    Activity currentActivity = getReactApplicationContext().getCurrentActivity();
     if (currentActivity == null) {
       promise.reject("Activity doesn't exist", "");
       return;

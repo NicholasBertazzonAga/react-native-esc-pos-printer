@@ -1,6 +1,5 @@
-import type { TurboModule } from 'react-native';
+import type { TurboModule, CodegenTypes } from 'react-native';
 import { TurboModuleRegistry } from 'react-native';
-import type { EventEmitter } from 'react-native/Libraries/Types/CodegenTypes';
 
 export interface Spec extends TurboModule {
   readonly getConstants: () => {
@@ -40,9 +39,9 @@ export interface Spec extends TurboModule {
   enableLocationSetting(): Promise<void>;
   pairBluetoothDevice(macAddress: string): Promise<void>;
 
-  readonly onDiscovery: EventEmitter<Array<Object>>;
-  readonly enableLocationSettingSuccess: EventEmitter<void>;
-  readonly enableLocationSettingFailure: EventEmitter<void>;
+  readonly onDiscovery: CodegenTypes.EventEmitter<Array<Object>>;
+  readonly enableLocationSettingSuccess: CodegenTypes.EventEmitter<void>;
+  readonly enableLocationSettingFailure: CodegenTypes.EventEmitter<void>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('EscPosPrinterDiscovery');

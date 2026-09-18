@@ -127,7 +127,7 @@ export const SimplePrint = memo(() => {
       if (res) {
         setStatus(res);
       }
-    } catch (e) {
+    } catch {
       await printerInstance.disconnect();
     } finally {
       setPrinting(false);

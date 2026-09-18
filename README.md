@@ -23,6 +23,10 @@
 > [!WARNING]  
 > For react-native lower than 0.76.x version, use react-native-esc-pos-printer 4.3.3 or lower
 
+The current development version targets React Native 0.87+ and React 19.2.3+,
+with the New Architecture. Its generated native code is built with React Native
+0.87.1; compatibility with older React Native versions is not guaranteed.
+
 ```sh
 yarn add react-native-esc-pos-printer
 ```

@@ -1,6 +1,6 @@
 import { useRoute, type RouteProp } from '@react-navigation/native';
 import { memo, useMemo, useRef, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, type ViewInstance } from 'react-native';
 import { Printer, PrinterConstants } from 'react-native-esc-pos-printer';
 import { Button, ScreenTitle } from '../components';
 import type { RootStackParamList } from '../navigation/RootNavigator';
@@ -14,7 +14,7 @@ export const PrintFromView = memo(() => {
     params: { printer },
   } = useRoute<ImageFromViewPrintRouteProp>();
 
-  const ref = useRef<View>(null);
+  const ref = useRef<ViewInstance>(null);
 
   const [printing, setPrinting] = useState(false);
 
@@ -50,7 +50,7 @@ export const PrintFromView = memo(() => {
         await printerInstance.disconnect();
         return result;
       });
-    } catch (e) {
+    } catch {
       await printerInstance.disconnect();
     } finally {
       setPrinting(false);
