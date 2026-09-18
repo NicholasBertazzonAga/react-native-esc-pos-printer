@@ -8,11 +8,11 @@ We want this community to be friendly and respectful to each other. Please follo
 
 This project is a monorepo managed using [Yarn workspaces](https://yarnpkg.com/features/workspaces). It contains the following packages:
 
-- The library package in the `package/` directory.
-- An example app in the `package/example/` directory.
+- The library package in the repository root.
+- An example app in the `example/` directory.
 
 Use a Node.js version supported by React Native 0.87 (22.13+, 24.3+, or 26+;
-see `package/package.json` for the exact range). The repository pins Yarn 3.6.1.
+see `package.json` for the exact range). The repository pins Yarn 3.6.1.
 Android builds use JDK 17 or newer, Android SDK / Build Tools 37, NDK
 27.1.12297006, and Gradle 9.4.1. iOS builds require Xcode 16.1 or newer and
 CocoaPods. Use a Ruby installation with working development headers for
@@ -21,14 +21,13 @@ CocoaPods. Use a Ruby installation with working development headers for
 To install dependencies and generate the library's native interfaces:
 
 ```sh
-cd package
 corepack yarn install
 corepack yarn prepare
 ```
 
 > Since the project relies on Yarn workspaces, you cannot use [`npm`](https://github.com/npm/cli) for development.
 
-The [example app](./package/example/) demonstrates usage of the library. You need to run it to test any changes you make.
+The [example app](./example/) demonstrates usage of the library. You need to run it to test any changes you make.
 
 It is configured to use the local version of the library, so any changes you make to the library's source code will be reflected in the example app. Changes to the library's JavaScript code will be reflected in the example app without a rebuild, but native code changes will require a rebuild of the example app.
 
@@ -36,14 +35,19 @@ If you want to use Android Studio or XCode to edit the native code, you can open
 
 To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `react-native-esc-pos-printer` under `Android`.
 
-Run the commands below from `package/`. For iOS, first run `bundle install`
-from `package/example/`, then `bundle exec pod install` from its `ios/`
+Run the commands below from the repository root. For iOS, first run `bundle install`
+from `example/`, then `bundle exec pod install` from its `ios/`
 directory.
 
 The package ships generated native code (`includesGeneratedCode: true`). Run
 `yarn prepare` after changing React Native or the specs in `src/specs`, and
 before building or packing the library. An upgrade of the Codegen version can
 also raise the minimum React Native version supported by consuming apps.
+
+Git installs with npm build the library automatically using `prepare`,
+which generates JavaScript, TypeScript
+declarations, and native Codegen output. Keep the build tools in
+`devDependencies`; consumers only need the runtime dependencies after packing.
 
 To start the packager:
 

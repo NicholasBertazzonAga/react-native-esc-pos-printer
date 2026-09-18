@@ -31,6 +31,25 @@ with the New Architecture. Its generated native code is built with React Native
 yarn add react-native-esc-pos-printer
 ```
 
+### Install directly from GitHub
+
+After pushing this repository to GitHub, replace `YOUR_ORG` and `COMMIT_SHA`
+below with your repository owner and the commit you want to install:
+
+```sh
+npm install "git+https://github.com/YOUR_ORG/react-native-esc-pos-printer.git#COMMIT_SHA"
+```
+
+You can also use a branch or tag instead of a commit SHA. Pin a commit for
+reproducible installs. No npm publication or GitHub release is required.
+
+Installation builds the JavaScript, TypeScript declarations, and native Codegen
+files using npm's `prepare` script. Keep lifecycle scripts enabled
+and use the Node.js version required by this package (see `package.json`).
+The Epson SDK is still downloaded from the npm registry and copied into the
+native directories by `postinstall`. Complete the native setup linked below,
+including installing CocoaPods dependencies for iOS.
+
 ### Expo
 
 ```sh
