@@ -252,7 +252,7 @@ RCT_EXPORT_METHOD(addCut: (nonnull NSString*) target
 }
 
 RCT_EXPORT_METHOD(addCommand: (nonnull NSString*) target
-                  base64string: (NSString*)base64string
+                  data: (NSString*)base64string
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
